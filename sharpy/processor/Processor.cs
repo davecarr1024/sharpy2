@@ -1,21 +1,21 @@
 namespace sharpy.processor
 {
-    public class Processor<ResultValueT, StateValueT>
-        : IProcessor<ResultValueT, StateValueT>
+    public class Processor<ResultValue, StateValue>
+        : IProcessor<ResultValue, StateValue>
         
         
     {
         public string RootRuleName { get; init; }
 
-        public IReadOnlyDictionary<string, Rule<ResultValueT, StateValueT>> Rules { get; init; }
+        public IReadOnlyDictionary<string, Rule<ResultValue, StateValue>> Rules { get; init; }
 
-        public Processor(string rootRuleName, IReadOnlyDictionary<string, Rule<ResultValueT, StateValueT>> rules)
+        public Processor(string rootRuleName, IReadOnlyDictionary<string, Rule<ResultValue, StateValue>> rules)
         {
             RootRuleName = rootRuleName;
             Rules = rules;
         }
 
-        public ResultAndState<ResultValueT, StateValueT> Apply(string ruleName, State<ResultValueT, StateValueT> state)
+        public ResultAndState<ResultValue, StateValue> Apply(string ruleName, State<ResultValue, StateValue> state)
         {
             try
             {
@@ -27,10 +27,10 @@ namespace sharpy.processor
             }
         }
 
-        public ResultAndState<ResultValueT, StateValueT> Apply(State<ResultValueT, StateValueT> state)
+        public ResultAndState<ResultValue, StateValue> Apply(State<ResultValue, StateValue> state)
             => Apply(RootRuleName, state);
 
-        public ResultAndState<ResultValueT, StateValueT> Apply(StateValueT stateValue)
-            => Apply(new State<ResultValueT, StateValueT>(this, stateValue));
+        public ResultAndState<ResultValue, StateValue> Apply(StateValue stateValue)
+            => Apply(new State<ResultValue, StateValue>(this, stateValue));
     }
 }

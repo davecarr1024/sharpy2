@@ -1,25 +1,25 @@
 namespace sharpy.processor
 {
-    public class RuleError<ResultValueT, StateValueT>
+    public class RuleError<ResultValue, StateValue>
         : Error
         
         
     {
-        public Rule<ResultValueT, StateValueT> Rule { get; init; }
+        public Rule<ResultValue, StateValue> Rule { get; init; }
 
-        public State<ResultValueT, StateValueT> State { get; init; }
+        public State<ResultValue, StateValue> State { get; init; }
 
-        protected RuleError(Rule<ResultValueT, StateValueT> rule, State<ResultValueT, StateValueT> state, string? message, string? ruleName)
+        protected RuleError(Rule<ResultValue, StateValue> rule, State<ResultValue, StateValue> state, string? message, string? ruleName)
         : base(message, ruleName)
         {
             Rule = rule;
             State = state;
         }
 
-        public RuleError(Rule<ResultValueT, StateValueT> rule, State<ResultValueT, StateValueT> state, string? message = null)
+        public RuleError(Rule<ResultValue, StateValue> rule, State<ResultValue, StateValue> state, string? message = null)
             : this(rule, state, message, null) { }
 
         public override Error WithRuleName(string ruleName)
-            => new RuleError<ResultValueT, StateValueT>(Rule, State, Message, ruleName);
+            => new RuleError<ResultValue, StateValue>(Rule, State, Message, ruleName);
     }
 }

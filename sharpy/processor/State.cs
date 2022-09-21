@@ -1,20 +1,20 @@
 namespace sharpy.processor
 {
-    public class State<ResultValueT, StateValueT>
+    public class State<ResultValue, StateValue>
         
         
     {
-        public IProcessor<ResultValueT, StateValueT> Processor { get; init; }
+        public IProcessor<ResultValue, StateValue> Processor { get; init; }
 
-        public StateValueT Value { get; init; }
+        public StateValue Value { get; init; }
 
-        public State(IProcessor<ResultValueT, StateValueT> processor, StateValueT value)
+        public State(IProcessor<ResultValue, StateValue> processor, StateValue value)
         {
             Processor = processor;
             Value = value;
         }
 
-        public State<ResultValueT, StateValueT> WithValue(StateValueT value)
-            => new State<ResultValueT, StateValueT>(Processor, value);
+        public State<ResultValue, StateValue> WithValue(StateValue value)
+            => new State<ResultValue, StateValue>(Processor, value);
     }
 }

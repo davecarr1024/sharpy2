@@ -1,10 +1,10 @@
 namespace sharpy.processor
 {
-    public interface IProcessor<ResultValueT, StateValueT>
+    public interface IProcessor<ResultValue, StateValue>
     {
-        ResultAndState<ResultValueT, StateValueT>
+        ResultAndState<ResultValue, StateValue>
         Apply(
-            string rule_name, State<ResultValueT, StateValueT> state
+            string rule_name, State<ResultValue, StateValue> state
         );
     }
 }

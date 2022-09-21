@@ -2,8 +2,8 @@ using System.Collections.ObjectModel;
 
 namespace sharpy.processor
 {
-    public class NestedRuleError<ResultValueT, StateValueT>
-        : RuleError<ResultValueT, StateValueT>
+    public class NestedRuleError<ResultValue, StateValue>
+        : RuleError<ResultValue, StateValue>
         
         
     {
@@ -11,27 +11,27 @@ namespace sharpy.processor
 
         protected NestedRuleError(
             IReadOnlyCollection<Error> children,
-            Rule<ResultValueT, StateValueT> rule,
-            State<ResultValueT, StateValueT> state,
+            Rule<ResultValue, StateValue> rule,
+            State<ResultValue, StateValue> state,
             string? message,
             string? ruleName) : base(rule, state, message, ruleName)
             => Children = children;
 
         public NestedRuleError(
-            Rule<ResultValueT, StateValueT> rule,
-            State<ResultValueT, StateValueT> state,
+            Rule<ResultValue, StateValue> rule,
+            State<ResultValue, StateValue> state,
             IReadOnlyCollection<Error> children,
             string? message = null)
             : this(children, rule, state, message, null) { }
 
         public NestedRuleError(
-            Rule<ResultValueT, StateValueT> rule,
-            State<ResultValueT, StateValueT> state,
+            Rule<ResultValue, StateValue> rule,
+            State<ResultValue, StateValue> state,
             Error child,
             string? message = null)
             : this(rule, state, new ReadOnlyCollection<Error>(new List<Error> { child }), message) { }
 
         public override Error WithRuleName(string ruleName)
-            => new NestedRuleError<ResultValueT, StateValueT>(Children, Rule, State, Message, ruleName);
+            => new NestedRuleError<ResultValue, StateValue>(Children, Rule, State, Message, ruleName);
     }
 }

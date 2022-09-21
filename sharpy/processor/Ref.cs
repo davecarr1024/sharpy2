@@ -1,7 +1,7 @@
 namespace sharpy.processor
 {
-    public class Ref<ResultValueT, StateValueT>
-        : Rule<ResultValueT, StateValueT>
+    public class Ref<ResultValue, StateValue>
+        : Rule<ResultValue, StateValue>
         
         
     {
@@ -9,7 +9,7 @@ namespace sharpy.processor
 
         public Ref(string ruleName) => RuleName = ruleName;
 
-        public ResultAndState<ResultValueT, StateValueT> Apply(State<ResultValueT, StateValueT> state)
+        public ResultAndState<ResultValue, StateValue> Apply(State<ResultValue, StateValue> state)
         {
             try
             {
@@ -17,7 +17,7 @@ namespace sharpy.processor
             }
             catch (Error error)
             {
-                throw new NestedRuleError<ResultValueT, StateValueT>(this, state, error);
+                throw new NestedRuleError<ResultValue, StateValue>(this, state, error);
             }
         }
     }
