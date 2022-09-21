@@ -1,8 +1,6 @@
 namespace sharpy.processor
 {
     public class ResultAndState<ResultValueT, StateValueT>
-        where ResultValueT : ResultValue
-        where StateValueT : StateValue
     {
         public Result<ResultValueT> Result { get; init; }
 
@@ -16,5 +14,13 @@ namespace sharpy.processor
 
         public ResultAndState<ResultValueT, StateValueT> WithRuleName(string rule_name)
             => new ResultAndState<ResultValueT, StateValueT>(Result.WithRuleName(rule_name), State);
+
+        public ResultAndState<ResultValueT, StateValueT> AsChildResult()
+            => new ResultAndState<ResultValueT, StateValueT>(
+                new Result<ResultValueT>(
+                    default(ResultValueT),
+                    new List<Result<ResultValueT>> { Result }),
+                State
+            );
     }
 }

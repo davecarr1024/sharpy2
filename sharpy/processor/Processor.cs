@@ -2,8 +2,8 @@ namespace sharpy.processor
 {
     public class Processor<ResultValueT, StateValueT>
         : IProcessor<ResultValueT, StateValueT>
-        where ResultValueT : ResultValue
-        where StateValueT : StateValue
+        
+        
     {
         public string RootRuleName { get; init; }
 

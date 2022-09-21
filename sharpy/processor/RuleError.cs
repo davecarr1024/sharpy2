@@ -2,8 +2,8 @@ namespace sharpy.processor
 {
     public class RuleError<ResultValueT, StateValueT>
         : Error
-        where ResultValueT : ResultValue
-        where StateValueT : StateValue
+        
+        
     {
         public Rule<ResultValueT, StateValueT> Rule { get; init; }
 

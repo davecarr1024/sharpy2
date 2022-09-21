@@ -1,6 +1,6 @@
 namespace sharpy.processor
 {
-    public class Result<ResultValueT> where ResultValueT : ResultValue
+    public class Result<ResultValueT> 
     {
         public ResultValueT? ResultValue { get; init; }
 

@@ -2,8 +2,8 @@ namespace sharpy.processor
 {
     public class Ref<ResultValueT, StateValueT>
         : Rule<ResultValueT, StateValueT>
-        where ResultValueT : ResultValue
-        where StateValueT : StateValue
+        
+        
     {
         public string RuleName { get; init; }
 
@@ -13,7 +13,7 @@ namespace sharpy.processor
         {
             try
             {
-                return state.Processor.Apply(RuleName, state);
+                return state.Processor.Apply(RuleName, state).AsChildResult();
             }
             catch (Error error)
             {

@@ -4,8 +4,8 @@ namespace sharpy.processor
 {
     public class NestedRuleError<ResultValueT, StateValueT>
         : RuleError<ResultValueT, StateValueT>
-        where ResultValueT : ResultValue
-        where StateValueT : StateValue
+        
+        
     {
         public IReadOnlyCollection<Error> Children { get; private set; }
 

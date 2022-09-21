@@ -1,8 +1,8 @@
 namespace sharpy.processor
 {
     public class State<ResultValueT, StateValueT>
-        where ResultValueT : ResultValue
-        where StateValueT : StateValue
+        
+        
     {
         public IProcessor<ResultValueT, StateValueT> Processor { get; init; }
 
